@@ -6,7 +6,7 @@
 /*   By: jerperez <jerperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:25:41 by jerperez          #+#    #+#             */
-/*   Updated: 2024/04/24 15:40:51 by jerperez         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:54:36 by jerperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,39 @@ Base *generate(void)
 	return (0);
 }
 
+void	identify(Base* p)
+{
+	Base* tmp;
+	tmp = dynamic_cast<A*>(p);
+	if (tmp)
+	{
+		std::cout << "identify: info: found A" << std::endl;
+		return ;
+	}
+	tmp = dynamic_cast<B*>(p);
+	if (tmp)
+	{
+		std::cout << "identify: info: found B" << std::endl;
+		return ;
+	}
+	tmp = dynamic_cast<C*>(p);
+	if (tmp)
+	{
+		std::cout << "identify: info: found C" << std::endl;
+		return ;
+	}
+}
+
+void	identify(Base& p)
+{
+	(void)p;
+	std::cout << "IDK" << std::endl;
+}
+
 int main(void)
 {
 	Base	*unknown = generate();
+	identify(unknown);
+	identify(*unknown);
 	delete unknown;
 }

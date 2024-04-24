@@ -6,7 +6,7 @@
 /*   By: jerperez <jerperez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:25:41 by jerperez          #+#    #+#             */
-/*   Updated: 2024/04/24 15:54:36 by jerperez         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:04:31 by jerperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,44 @@ void	identify(Base* p)
 	tmp = dynamic_cast<A*>(p);
 	if (tmp)
 	{
-		std::cout << "identify: info: found A" << std::endl;
+		std::cout << "identify(Base* p): info: found A" << std::endl;
 		return ;
 	}
 	tmp = dynamic_cast<B*>(p);
 	if (tmp)
 	{
-		std::cout << "identify: info: found B" << std::endl;
+		std::cout << "identify(Base* p): info: found B" << std::endl;
 		return ;
 	}
 	tmp = dynamic_cast<C*>(p);
 	if (tmp)
 	{
-		std::cout << "identify: info: found C" << std::endl;
+		std::cout << "identify(Base* p): info: found C" << std::endl;
 		return ;
 	}
 }
 
 void	identify(Base& p)
 {
-	(void)p;
-	std::cout << "IDK" << std::endl;
+
+	try
+	{
+		(void)dynamic_cast<A&>(p);
+		std::cout << "identify(Base& p): info: found A" << std::endl;
+	}
+	catch (const std::exception& e) {}
+	try
+	{
+		(void)dynamic_cast<B&>(p);
+		std::cout << "identify(Base& p): info: found B" << std::endl;
+	}
+	catch (const std::exception& e) {}
+	try
+	{
+		(void)dynamic_cast<C&>(p);
+		std::cout << "identify(Base& p): info: found C" << std::endl;
+	}
+	catch (const std::exception& e) {}
 }
 
 int main(void)
